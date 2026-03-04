@@ -14,6 +14,7 @@ import {
 
 export const PHONE_NUMBER = "+91 85550 66584";
 export const WHATSAPP_LINK = `https://wa.me/918555066584`;
+export const INSTAGRAM_LINK = "https://www.instagram.com/modernbeautyclinic_";
 
 export const SERVICES = [
   { 
