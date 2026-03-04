@@ -22,6 +22,7 @@ import {
 import { 
   PHONE_NUMBER, 
   WHATSAPP_LINK, 
+  INSTAGRAM_LINK,
   SERVICES, 
   GALLERY, 
   OFFERS, 
@@ -576,11 +577,20 @@ export default function App() {
                 Crafting timeless beauty experiences in Kadapa. We believe every woman deserves to shine with elegance and confidence.
               </p>
               <div className="flex gap-6">
-                {[Instagram, Facebook].map((Icon, i) => (
-                  <a key={i} href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:text-gold hover:border-gold transition-all duration-500">
-                    <Icon className="w-6 h-6" />
-                  </a>
-                ))}
+                <a 
+                  href={INSTAGRAM_LINK} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:text-gold hover:border-gold transition-all duration-500"
+                >
+                  <Instagram className="w-6 h-6" />
+                </a>
+                <a 
+                  href="#" 
+                  className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:text-gold hover:border-gold transition-all duration-500"
+                >
+                  <Facebook className="w-6 h-6" />
+                </a>
               </div>
             </div>
             <div>
