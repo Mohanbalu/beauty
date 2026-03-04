@@ -56,7 +56,7 @@ export const SERVICES = [
     name: "Manicure & Pedicure", 
     icon: React.createElement(Sparkles, { className: "w-6 h-6" }), 
     desc: "Pampering for your hands and feet.",
-    image: "https://images.unsplash.com/photo-1610992015732-2449b0c26670?auto=format&fit=crop&q=80&w=600"
+    image: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=600"
   },
   { 
     name: "Nail Art", 
@@ -74,13 +74,13 @@ export const SERVICES = [
     name: "Blouse Stitching", 
     icon: React.createElement(Scissors, { className: "w-6 h-6" }), 
     desc: "Custom-fit designer blouses.",
-    image: "https://images.unsplash.com/photo-1596462502278-27bfad450526?auto=format&fit=crop&q=80&w=600"
+    image: "https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&q=80&w=600"
   },
   { 
     name: "Embroidery Work", 
     icon: React.createElement(Sparkles, { className: "w-6 h-6" }), 
     desc: "Detailed and artistic hand embroidery.",
-    image: "https://images.unsplash.com/photo-1617142108319-66c7ab469f41?auto=format&fit=crop&q=80&w=600"
+    image: "https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&q=80&w=600"
   },
 ];
 
@@ -114,7 +114,22 @@ export const TESTIMONIALS = [
 ];
 
 export const BLOG_POSTS = [
-  { title: "Bridal Skincare Tips", date: "Oct 12, 2023", excerpt: "Prepare your skin for the big day with these simple steps..." },
-  { title: "Hair Care Secrets", date: "Nov 05, 2023", excerpt: "Maintain healthy and shiny hair with our expert advice..." },
-  { title: "Choosing Bridal Makeup", date: "Dec 20, 2023", excerpt: "How to pick the perfect look that matches your style..." },
+  { 
+    title: "Bridal Skincare Tips", 
+    date: "Oct 12, 2023", 
+    excerpt: "Prepare your skin for the big day with these simple steps...",
+    content: "A flawless bridal look starts with healthy skin. We recommend starting your skincare routine at least 3 months before the wedding. 1. Hydrate: Drink at least 3 liters of water daily. 2. Cleanse: Use a gentle cleanser twice a day. 3. Moisturize: Never skip moisturizer, even if you have oily skin. 4. Sunscreen: Protect your skin from UV damage. 5. Professional Facials: Visit us for monthly rejuvenating facials tailored to your skin type."
+  },
+  { 
+    title: "Hair Care Secrets", 
+    date: "Nov 05, 2023", 
+    excerpt: "Maintain healthy and shiny hair with our expert advice...",
+    content: "Your hair is your crowning glory. To keep it shiny and strong: 1. Regular Trims: Get a trim every 8-10 weeks to prevent split ends. 2. Deep Conditioning: Use a hair mask once a week. 3. Avoid Heat: Minimize the use of styling tools. 4. Scalp Massage: Stimulate blood flow with regular oil massages. 5. Professional Spa: Our hair spa treatments nourish from root to tip, ensuring your hair looks voluminous on your big day."
+  },
+  { 
+    title: "Choosing Bridal Makeup", 
+    date: "Dec 20, 2023", 
+    excerpt: "How to pick the perfect look that matches your style...",
+    content: "Choosing the right makeup look is crucial. Consider your outfit color, the time of the event, and your personal style. 1. Classic Red: Timeless and bold. 2. Nude & Dewy: Modern and elegant. 3. Smokey Eyes: For a dramatic evening look. 4. Traditional Gold: Perfect for South Indian brides. We offer personalized consultations to help you decide the best look that enhances your natural beauty."
+  },
 ];
