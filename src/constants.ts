@@ -39,7 +39,7 @@ export const SERVICES = [
     name: "Mehndi Design", 
     icon: React.createElement(Sparkles, { className: "w-6 h-6" }), 
     desc: "Intricate and beautiful henna patterns.",
-    image: "https://images.unsplash.com/photo-1590540179852-2110a54f813a?auto=format&fit=crop&q=80&w=600"
+    image: "1.jpg"
   },
   { 
     name: "Skin Care", 
@@ -51,13 +51,13 @@ export const SERVICES = [
     name: "Hair Care & Spa", 
     icon: React.createElement(Scissors, { className: "w-6 h-6" }), 
     desc: "Professional hair styling and nourishing treatments.",
-    image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=600"
+    image: "3.jpg"
   },
   { 
     name: "Manicure & Pedicure", 
     icon: React.createElement(Sparkles, { className: "w-6 h-6" }), 
     desc: "Pampering for your hands and feet.",
-    image: "https://images.unsplash.com/photo-1519014816548-bf5fe059798b?auto=format&fit=crop&q=80&w=600"
+    image: "2.jpg"
   },
   { 
     name: "Nail Art", 
@@ -75,13 +75,13 @@ export const SERVICES = [
     name: "Blouse Stitching", 
     icon: React.createElement(Scissors, { className: "w-6 h-6" }), 
     desc: "Custom-fit designer blouses.",
-    image: "https://images.unsplash.com/photo-1605518216938-7c31b7b14ad0?auto=format&fit=crop&q=80&w=600"
+    image: "4.jpg"
   },
   { 
     name: "Embroidery Work", 
     icon: React.createElement(Sparkles, { className: "w-6 h-6" }), 
     desc: "Detailed and artistic hand embroidery.",
-    image: "https://images.unsplash.com/photo-1620331311520-246422fd82f9?auto=format&fit=crop&q=80&w=600"
+    image: "5.jpg"
   },
 ];
 
