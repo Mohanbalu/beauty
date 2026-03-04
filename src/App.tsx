@@ -32,26 +32,46 @@ import {
 
 // --- Components ---
 
-const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean, onClose: () => void, title: string, children: React.ReactNode }) => (
-  <AnimatePresence>
-    {isOpen && (
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md">
+const Modal = ({ isOpen, onClose, title, children }: { isOpen: boolean, onClose: () => void, title: string, children: React.ReactNode }) => {
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => { document.body.style.overflow = 'unset'; };
+  }, [isOpen]);
+
+  return (
+    <AnimatePresence>
+      {isOpen && (
         <motion.div 
-          initial={{ opacity: 0, scale: 0.9, y: 20 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          exit={{ opacity: 0, scale: 0.9, y: 20 }}
-          className="relative w-full max-w-md overflow-hidden glass-card p-8 text-center border-gold/30"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md overflow-y-auto"
+          onClick={(e) => e.target === e.currentTarget && onClose()}
         >
-          <button onClick={onClose} className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors">
-            <X className="w-6 h-6" />
-          </button>
-          <h3 className="text-3xl font-display mb-6 gold-text-gradient">{title}</h3>
-          {children}
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="relative w-full max-w-2xl my-8 glass-card p-6 md:p-10 text-center border-gold/30"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button onClick={onClose} className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors z-20">
+              <X className="w-6 h-6" />
+            </button>
+            <h3 className="text-3xl md:text-4xl font-display mb-8 gold-text-gradient">{title}</h3>
+            <div className="max-h-[70vh] overflow-y-auto pr-2 custom-scrollbar">
+              {children}
+            </div>
+          </motion.div>
         </motion.div>
-      </div>
-    )}
-  </AnimatePresence>
-);
+      )}
+    </AnimatePresence>
+  );
+};
 
 const BookingContent = () => (
   <div className="space-y-8">
@@ -114,9 +134,26 @@ const BeforeAfter = () => {
   );
 };
 
+const ArticleContent = ({ article }: { article: typeof BLOG_POSTS[0] }) => (
+  <div className="text-left space-y-6">
+    <div className="aspect-video rounded-2xl overflow-hidden border border-white/10">
+      <img src={`https://picsum.photos/seed/${article.title}/800/450`} alt={article.title} className="w-full h-full object-cover" />
+    </div>
+    <div className="text-gold text-[10px] font-bold uppercase tracking-widest">{article.date}</div>
+    <p className="text-white/80 leading-relaxed text-sm md:text-base">{article.content}</p>
+    <div className="pt-6 border-t border-white/10">
+      <p className="text-gold text-xs font-bold uppercase tracking-widest mb-4">Interested in this service?</p>
+      <BookingContent />
+    </div>
+  </div>
+);
+
 export default function App() {
   const [isBookingModalOpen, setIsBookingModalOpen] = useState(false);
+  const [isArticleModalOpen, setIsArticleModalOpen] = useState(false);
+  const [isAllArticlesModalOpen, setIsAllArticlesModalOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<string | null>(null);
+  const [selectedArticle, setSelectedArticle] = useState<typeof BLOG_POSTS[0] | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeCategory, setActiveCategory] = useState("All");
   const { scrollYProgress } = useScroll();
@@ -132,6 +169,11 @@ export default function App() {
   const openBooking = (service?: string) => {
     setSelectedService(service || null);
     setIsBookingModalOpen(true);
+  };
+
+  const openArticle = (article: typeof BLOG_POSTS[0]) => {
+    setSelectedArticle(article);
+    setIsArticleModalOpen(true);
   };
 
   const categories = ["All", "Bridal Makeup", "Mehndi Designs", "Hair Styling", "Boutique Work"];
@@ -279,8 +321,8 @@ export default function App() {
                   <h3 className="text-2xl mb-3 group-hover:text-gold transition-colors">{service.name}</h3>
                   <p className="text-white/50 mb-8 text-sm font-light leading-relaxed">{service.desc}</p>
                   <button 
-                    onClick={() => openBooking(service.name)}
-                    className="flex items-center gap-2 text-gold font-bold uppercase tracking-widest text-[10px] group-hover:gap-4 transition-all"
+                    onClick={(e) => { e.stopPropagation(); openBooking(service.name); }}
+                    className="relative z-10 flex items-center gap-2 text-gold font-bold uppercase tracking-widest text-[10px] group-hover:gap-4 transition-all"
                   >
                     Book Service <ArrowRight className="w-4 h-4" />
                   </button>
@@ -450,20 +492,28 @@ export default function App() {
               <h2 className="text-5xl md:text-7xl mb-4">Beauty Tips</h2>
               <p className="text-white/50 italic font-serif text-xl">Expert advice for your beauty routine.</p>
             </div>
-            <button className="hidden md:flex items-center gap-2 text-gold font-bold uppercase tracking-widest text-[10px] border-b border-gold/30 pb-1 hover:border-gold transition-all">
+            <button 
+              onClick={() => setIsAllArticlesModalOpen(true)}
+              className="hidden md:flex items-center gap-2 text-gold font-bold uppercase tracking-widest text-[10px] border-b border-gold/30 pb-1 hover:border-gold transition-all"
+            >
               View All Articles <ChevronRight className="w-4 h-4" />
             </button>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
             {BLOG_POSTS.map((post, i) => (
-              <div key={i} className="group cursor-pointer">
+              <div key={i} className="group cursor-pointer" onClick={() => openArticle(post)}>
                 <div className="aspect-video rounded-3xl overflow-hidden mb-6 border border-white/5">
-                  <img src={`https://picsum.photos/seed/beauty${i}/800/450`} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                  <img src={`https://picsum.photos/seed/${post.title}/800/450`} alt={post.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
                 </div>
                 <div className="text-gold text-[10px] font-bold uppercase tracking-widest mb-3">{post.date}</div>
                 <h3 className="text-2xl mb-4 group-hover:text-gold transition-colors">{post.title}</h3>
                 <p className="text-white/50 text-sm mb-6 font-light">{post.excerpt}</p>
-                <div className="flex items-center gap-2 text-white/80 font-bold uppercase tracking-widest text-[10px]">Read More <ArrowRight className="w-4 h-4" /></div>
+                <button 
+                  onClick={(e) => { e.stopPropagation(); openArticle(post); }}
+                  className="flex items-center gap-2 text-white/80 font-bold uppercase tracking-widest text-[10px] hover:text-gold transition-colors"
+                >
+                  Read More <ArrowRight className="w-4 h-4" />
+                </button>
               </div>
             ))}
           </div>
@@ -582,6 +632,46 @@ export default function App() {
         title={selectedService ? `Book ${selectedService}` : "Book Your Appointment"}
       >
         <BookingContent />
+      </Modal>
+
+      {/* Article Modal */}
+      <Modal 
+        isOpen={isArticleModalOpen} 
+        onClose={() => setIsArticleModalOpen(false)} 
+        title={selectedArticle?.title || "Beauty Tip"}
+      >
+        {selectedArticle && <ArticleContent article={selectedArticle} />}
+      </Modal>
+
+      {/* All Articles Modal */}
+      <Modal 
+        isOpen={isAllArticlesModalOpen} 
+        onClose={() => setIsAllArticlesModalOpen(false)} 
+        title="All Beauty Tips"
+      >
+        <div className="grid grid-cols-1 gap-8 text-left">
+          {BLOG_POSTS.map((post, i) => (
+            <div 
+              key={i} 
+              className="group cursor-pointer border-b border-white/10 pb-8 last:border-0"
+              onClick={() => {
+                setIsAllArticlesModalOpen(false);
+                openArticle(post);
+              }}
+            >
+              <div className="flex flex-col md:flex-row gap-6">
+                <div className="w-full md:w-48 aspect-video rounded-xl overflow-hidden shrink-0">
+                  <img src={`https://picsum.photos/seed/${post.title}/400/225`} alt={post.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                </div>
+                <div>
+                  <div className="text-gold text-[10px] font-bold uppercase tracking-widest mb-2">{post.date}</div>
+                  <h4 className="text-xl mb-2 group-hover:text-gold transition-colors">{post.title}</h4>
+                  <p className="text-white/50 text-sm line-clamp-2">{post.excerpt}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </Modal>
     </div>
   );
