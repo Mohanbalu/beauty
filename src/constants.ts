@@ -51,13 +51,13 @@ export const SERVICES = [
     name: "Hair Care & Spa", 
     icon: React.createElement(Scissors, { className: "w-6 h-6" }), 
     desc: "Professional hair styling and nourishing treatments.",
-    image: "3.jpg"
+    image: "https://siestaheadspa.com/wp-content/uploads/2024/09/The-Unique-Experience-of-Hair-and-Scalp-Care-at-Siesta-Head-Spa-and-Salon-6.webp"
   },
   { 
     name: "Manicure & Pedicure", 
     icon: React.createElement(Sparkles, { className: "w-6 h-6" }), 
     desc: "Pampering for your hands and feet.",
-    image: "2.jpg"
+    image: "https://static.wixstatic.com/media/28d39c_39fee459703c4ddcb33b511055322794~mv2.jpg/v1/fill/w_1000,h_750,al_c,q_85,usm_0.66_1.00_0.01/28d39c_39fee459703c4ddcb33b511055322794~mv2.jpg"
   },
   { 
     name: "Nail Art", 
@@ -75,13 +75,13 @@ export const SERVICES = [
     name: "Blouse Stitching", 
     icon: React.createElement(Scissors, { className: "w-6 h-6" }), 
     desc: "Custom-fit designer blouses.",
-    image: "4.jpg"
+    image: "https://khinkhwab.com/cdn/shop/files/khinkhwab-design-studio-potli-buttons-blouse-stitching-simple-without-pads-18937974128802.jpg?v=1700949039&width=3840"
   },
   { 
     name: "Embroidery Work", 
     icon: React.createElement(Sparkles, { className: "w-6 h-6" }), 
     desc: "Detailed and artistic hand embroidery.",
-    image: "5.jpg"
+    image: "https://www.hunarcourses.com/blog/wp-content/uploads/2022/11/Image-3-9.jpg"
   },
 ];
 
