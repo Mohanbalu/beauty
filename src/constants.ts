@@ -39,7 +39,7 @@ export const SERVICES = [
     name: "Mehndi Design", 
     icon: React.createElement(Sparkles, { className: "w-6 h-6" }), 
     desc: "Intricate and beautiful henna patterns.",
-    image: "1.jpg"
+    image: "https://www.affordable.pk/uploads/blog/1681727779_20+%20Beautiful%20and%20Trendy%20Mehndi%20Designs%20for%20Eid%202023.jpg"
   },
   { 
     name: "Skin Care", 
