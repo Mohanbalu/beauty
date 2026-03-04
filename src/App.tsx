@@ -185,7 +185,7 @@ export default function App() {
       <nav className={`fixed top-0 left-0 right-0 z-40 transition-all duration-700 ${isScrolled ? 'bg-black/90 backdrop-blur-xl py-4 border-b border-white/10' : 'bg-transparent py-8'}`}>
         <div className="container mx-auto px-6 flex items-center justify-between">
           <div className="flex flex-col group cursor-pointer">
-            <span className="text-2xl md:text-3xl font-display font-bold gold-text-gradient leading-none group-hover:tracking-wider transition-all duration-500">MODERN</span>
+            <span className="text-2xl md:text-3xl font-display font-bold gold-text-gradient leading-none group-hover:tracking-wider transition-all duration-500">MBC</span>
             <span className="text-[10px] uppercase tracking-[0.4em] text-white/50 group-hover:text-gold transition-colors">Beauty Parlour & Boutique</span>
           </div>
           <div className="hidden lg:flex items-center gap-10 text-[11px] uppercase tracking-[0.2em] font-semibold">
@@ -569,7 +569,7 @@ export default function App() {
           <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
             <div className="md:col-span-2">
               <div className="flex flex-col mb-8">
-                <span className="text-4xl font-display font-bold gold-text-gradient leading-none">MODERN</span>
+                <span className="text-4xl font-display font-bold gold-text-gradient leading-none">MBC</span>
                 <span className="text-xs uppercase tracking-[0.4em] text-white/50">Beauty Parlour & Boutique</span>
               </div>
               <p className="text-white/40 max-w-sm mb-10 text-lg font-light leading-relaxed">
@@ -601,7 +601,7 @@ export default function App() {
             </div>
           </div>
           <div className="pt-10 border-t border-white/5 text-center text-white/20 text-[10px] uppercase tracking-[0.5em] font-bold">
-            &copy; {new Date().getFullYear()} Modern Beauty Parlour & Boutique. Crafted for Excellence.
+            &copy; {new Date().getFullYear()} MBC. Crafted for Excellence.
           </div>
         </div>
       </footer>
